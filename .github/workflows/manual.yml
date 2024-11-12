@@ -1,0 +1,34 @@
+# This is a basic workflow that is manually triggered
+
+name: test
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  schedule:
+    - cron: '30 14 * * *'  # Runs every day at 9:00 AM UTC
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  send_birthday_email:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run script
+      env:
+        UKG_API_KEY: ${{ secrets.UKG_API_KEY }}
+        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+      run: python birthday_email_script.py
