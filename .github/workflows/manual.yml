@@ -2,7 +2,7 @@ name: Scheduled Test Run
 
 on:
   schedule:
-    - cron: '40 14 * * *'  # Runs every day at 2:30 PM UTC
+    - cron: '*/10 * * * *' # Runs every 10 minutes
 
 jobs:
   test_script:
