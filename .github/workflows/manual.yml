@@ -31,4 +31,4 @@ jobs:
       env:
         UKG_API_KEY: ${{ secrets.UKG_API_KEY }}
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-      run: python birthday_email_script.py
+      run: python test.py
