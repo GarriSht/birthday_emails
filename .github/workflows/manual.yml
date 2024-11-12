@@ -2,7 +2,7 @@ name: Scheduled Test Run
 
 on:
   schedule:
-    - cron: '30 18 * * *'
+    - cron: '00 19 * * *'
 
 jobs:
   test_script:
